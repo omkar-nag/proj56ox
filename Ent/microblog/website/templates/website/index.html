@@ -1,0 +1,52 @@
+{% extends "website/layout.html" %}
+{% load static %}
+{% block body %}
+<strong><div id="demo"></div></strong>
+<div id='everything'>
+    {% if user is 'AnonymousUser' %}
+    <div id="newpost"></div>
+    <div id="myprofile"></div>
+    {% endif %}
+    <!-- all the posts -->
+    {% if user.is_authenticated %}
+    <div id="newpostdiv">
+        <form  id="form"  autocomplete="off">
+            <label style='margin-left: 25px; font-family: monospace;' id="whatsonyour" for="addpost">What's on your mind? ✍</label><br>
+            <textarea class= "textarea1" id="textarea1" name="addpost" placeholder="Type something..." ></textarea>
+        </form>
+        <button class="submitpost" id="submitpost">Post</button><br>
+    </div>
+    {% endif %}
+
+    <div id="profile_page" style="padding-top: 5ch;padding-bottom: 0; margin-bottom: 0;" >
+        <button id="followbutton" ></button>
+        <label style="user-select: none; font-size: 2ch; font-family: monospace;" for="1">Followers:</label>
+        <button name="1" id="followingcount"  disabled ></button>
+        <label style="margin-left: 10ch; font-family: monospace; font-size: 2ch;user-select: none;"for="1">Following:</label>
+        <button name="2" id="followerscount" disabled></button>
+    </div>
+    
+    <div  id="alltheposts">
+    </div>
+    <nav style=" margin-bottom: 20ch;" aria-label="Page navigation example">
+        <ul id="pagination" style="margin-top: 5ch;" class="pagination">
+          <li class="page-item">
+            <a id="prevpage" class="page-link" href="#" style=" width: 35px; background-color: rgb(49, 49, 49);" aria-label="Previous">
+              <span style="color:rgb(173, 173, 173);font-weight: 1000;" aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a style="color:rgb(255, 198, 9);font-weight: 1000; background-color:rgb(49, 49, 49) ;" id="cpage"class="page-link" href="#">0</a></li>
+          <li class="page-item">
+            <a style="background-color: rgb(49, 49, 49); width: 35px;"class="page-link"id="nextpage" href="#" aria-label="Next">
+              <span style="color:rgb(173, 173, 173); font-weight: 1000;" aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    
+</div>
+
+<!-- end of the page -->
+{% endblock %}

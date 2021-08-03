@@ -1,0 +1,32 @@
+{% extends "website/layout.html" %}
+
+{% block body %}
+<div class="div1234">
+
+    <h2 style="margin-left: 2ch;">Register</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'register' %}"  style="margin-left: 5ch;" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input style="width: 500px;" class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input style="width: 500px;"class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <input style="width: 500px;" class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input style="width: 500px;"class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <input style="width: 100%; background-color: rgb(250, 192, 0); border: rgb(250, 192, 0);"  class="btn btn-primary" type="submit" value="Register">
+    </form>
+
+    <p style="margin-left: 5ch;">Already have an account? <a href="{% url 'login' %}"><b>Log In here.</b></a></p>
+
+</div>
+{% endblock %}
